@@ -32,6 +32,11 @@
             </intent-filter>
         </activity>
 
+        <!-- 다음과 같이 LoginActivity를 선언해주세요 -->
+        <activity
+            android:name="com.example.androidar.LoginActivity"
+            android:label="Login Activity" />
+
     </application>
 
 </manifest>
