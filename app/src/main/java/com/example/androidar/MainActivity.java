@@ -1,13 +1,17 @@
 package com.example.androidar;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int clickNo = 0;
 
+    private Button buttonShowToast;
     public static boolean checkSystem(Activity activity) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -48,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        buttonShowToast = findViewById(R.id.button_show_toast);
+        buttonShowToast.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(MainActivity.this, "hello world!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         if (checkSystem(this)) {
 
             arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
